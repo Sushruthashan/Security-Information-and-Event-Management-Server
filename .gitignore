@@ -1,0 +1,44 @@
+### --- Python Essentials ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+### --- SIEM / EDR Specifics ---
+# Do not track local logs generated during testing
+*.log
+logs/
+data/sqlite/
+temp_pcaps/
+
+# Security & Credentials (Crucial)
+.env
+*.pem
+*.key
+certs/
+secrets.json
+config/local_settings.py
+
+### --- Ubuntu / System Artifacts ---
+.DS_Store
+.directory
+*.swp
+*.swo
+*~
+
+### --- IDEs & Editors ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+### --- Distribution / Build ---
+dist/
+build/
+*.egg-info/
