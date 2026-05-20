@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SIEM + EDR Dashboard</title>
+
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+  <div class="header">
+
+    <div>
+      <h1>SIEM + EDR Dashboard</h1>
+      <p>Real-Time Endpoint Detection & Threat Monitoring</p>
+    </div>
+
+    <div class="status">
+      SYSTEM ONLINE
+    </div>
+
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+
+    <div class="card">
+      <h3>Total Logs</h3>
+      <div class="value" id="totalLogs">0</div>
+    </div>
+
+    <div class="card">
+      <h3>Alerts Generated</h3>
+      <div class="value" id="totalAlerts">0</div>
+    </div>
+
+    <div class="card">
+      <h3>Endpoints Active</h3>
+      <div class="value" id="activeEndpoints">0</div>
+    </div>
+
+    <div class="card">
+      <h3>Threat Level</h3>
+      <div class="value" id="threatLevel">Medium</div>
+    </div>
+
+  </div>
+
+  <!-- Main -->
+  <div class="main-grid">
+
+    <!-- Alerts -->
+    <div class="panel">
+
+      <h2>Live Security Alerts</h2>
+
+      <div id="alertsContainer"></div>
+
+    </div>
+
+    <!-- Status -->
+    <div class="panel">
+
+      <h2>System Status</h2>
+
+      <div class="status-item">
+        <div class="status-top">
+          <span>CPU Usage</span>
+          <span id="cpuText">0%</span>
+        </div>
+
+        <div class="progress">
+          <div class="progress-bar cpu" id="cpuBar"></div>
+        </div>
+      </div>
+
+      <div class="status-item">
+        <div class="status-top">
+          <span>Memory Usage</span>
+          <span id="memoryText">0%</span>
+        </div>
+
+        <div class="progress">
+          <div class="progress-bar memory" id="memoryBar"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Logs -->
+  <div class="logs-panel">
+
+    <div class="logs-header">
+      <h2>Recent Endpoint Logs</h2>
+
+      <input
+        type="text"
+        class="search-box"
+        placeholder="Search logs..."
+        id="searchInput"
+      />
+    </div>
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>Timestamp</th>
+          <th>Endpoint</th>
+          <th>Event Type</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+
+      <tbody id="logsTable"></tbody>
+
+    </table>
+
+  </div>
+
+  <script src="/static/script.js"></script>
+
+</body>
+</html>

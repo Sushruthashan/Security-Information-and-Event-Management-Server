@@ -1,3 +1,4 @@
+from server.core.utils import alerts_storage
 from server.detection.detector import detect
 from server.models.alert import create_alert
 
@@ -9,6 +10,8 @@ def run_detection(event):
     # 1. Run the event through the detection pipeline
     # This now returns a list of alert dictionaries or None
     triggered_alerts = detect(event)
+    
+    print(f"[DETECTION RESULT] {triggered_alerts}")
 
     if not triggered_alerts:
         return
@@ -27,6 +30,14 @@ def run_detection(event):
             )
             
             # Optional: Log the detection to the console for real-time monitoring
+            
+            alerts_storage.append({
+    		"type": alert_data.get("title"),
+    		"endpoint": event.get("hostname", "unknown"),
+    		"process": event.get("process_name", "unknown"),
+    		"severity": alert_data.get("severity", "medium")
+	    })
+
             print(f"[*] ALERT PERSISTED: {alert_data['title']} | Severity: {alert_data['severity']}")
             
         except Exception as e:
